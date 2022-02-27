@@ -7,6 +7,15 @@
 
 import Foundation
 
-class LandingController: NSObject {
+class LandingController {
     
+//    MARK: Parameters
+    let viewModel: LandingViewModel
+    
+    let sections: [LandingSection]
+    
+    init(viewModel: LandingViewModel = LandingViewModel()) {
+        self.viewModel = viewModel
+        self.sections = [.search(row: [.search()]), .popular(row: [.viewed, .shared, .emailed])]
+    }
 }

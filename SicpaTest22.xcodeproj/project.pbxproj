@@ -30,6 +30,12 @@
 		5E2D17C627CB158F000049EE /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D17C527CB158F000049EE /* ArticleService.swift */; };
 		5E2D17C827CB15C1000049EE /* Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D17C727CB15C1000049EE /* Enumeration.swift */; };
 		5E2D17CA27CB16BC000049EE /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D17C927CB16BC000049EE /* Observer.swift */; };
+		5E2D17CD27CB5298000049EE /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D17CC27CB5298000049EE /* ArticleModel.swift */; };
+		5E2D17CF27CB92B4000049EE /* APIRequestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D17CE27CB92B4000049EE /* APIRequestSession.swift */; };
+		5E2D17D427CB9594000049EE /* APIEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D17D327CB9594000049EE /* APIEnums.swift */; };
+		5E2D17D627CB9811000049EE /* APIOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D17D527CB9811000049EE /* APIOperation.swift */; };
+		5E2D17D827CB984F000049EE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D17D727CB984F000049EE /* APIClient.swift */; };
+		5E2D17DA27CB98F0000049EE /* APINetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D17D927CB98F0000049EE /* APINetworkSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +83,12 @@
 		5E2D17C527CB158F000049EE /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
 		5E2D17C727CB15C1000049EE /* Enumeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumeration.swift; sourceTree = "<group>"; };
 		5E2D17C927CB16BC000049EE /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		5E2D17CC27CB5298000049EE /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		5E2D17CE27CB92B4000049EE /* APIRequestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestSession.swift; sourceTree = "<group>"; };
+		5E2D17D327CB9594000049EE /* APIEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnums.swift; sourceTree = "<group>"; };
+		5E2D17D527CB9811000049EE /* APIOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOperation.swift; sourceTree = "<group>"; };
+		5E2D17D727CB984F000049EE /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		5E2D17D927CB98F0000049EE /* APINetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APINetworkSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				5E2D179F27CB062B000049EE /* Modules */,
+				5E2D17CB27CB5261000049EE /* Models */,
+				5E2D17D027CB9311000049EE /* API */,
 				5E2D17A727CB09A8000049EE /* Utilities */,
 				5E2D17C427CB1562000049EE /* Services */,
 				5E2D179E27CB061C000049EE /* Delegates */,
@@ -177,9 +191,6 @@
 				5E2D177927CB01D5000049EE /* LaunchScreen.storyboard */,
 				5E2D177727CB01D5000049EE /* Assets.xcassets */,
 				5E2D177C27CB01D5000049EE /* Info.plist */,
-				5E2D17A427CB0886000049EE /* Constant.swift */,
-				5E2D17C727CB15C1000049EE /* Enumeration.swift */,
-				5E2D17C927CB16BC000049EE /* Observer.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -188,6 +199,9 @@
 			isa = PBXGroup;
 			children = (
 				5E2D17A827CB09D5000049EE /* JSONUtil.swift */,
+				5E2D17C927CB16BC000049EE /* Observer.swift */,
+				5E2D17A427CB0886000049EE /* Constant.swift */,
+				5E2D17C727CB15C1000049EE /* Enumeration.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -239,6 +253,26 @@
 				5E2D17C527CB158F000049EE /* ArticleService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		5E2D17CB27CB5261000049EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E2D17CC27CB5298000049EE /* ArticleModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5E2D17D027CB9311000049EE /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5E2D17D327CB9594000049EE /* APIEnums.swift */,
+				5E2D17CE27CB92B4000049EE /* APIRequestSession.swift */,
+				5E2D17D527CB9811000049EE /* APIOperation.swift */,
+				5E2D17D727CB984F000049EE /* APIClient.swift */,
+				5E2D17D927CB98F0000049EE /* APINetworkSession.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,21 +407,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E2D17B927CB0E15000049EE /* LandingController.swift in Sources */,
+				5E2D17D627CB9811000049EE /* APIOperation.swift in Sources */,
 				5E2D17C327CB0E7D000049EE /* ListingViewModel.swift in Sources */,
 				5E2D177627CB01D5000049EE /* SicpaTest22.xcdatamodeld in Sources */,
 				5E2D17C827CB15C1000049EE /* Enumeration.swift in Sources */,
+				5E2D17D827CB984F000049EE /* APIClient.swift in Sources */,
 				5E2D17B327CB0B79000049EE /* SearchViewController.swift in Sources */,
 				5E2D17A527CB0886000049EE /* Constant.swift in Sources */,
 				5E2D17CA27CB16BC000049EE /* Observer.swift in Sources */,
 				5E2D17C127CB0E6D000049EE /* ListingController.swift in Sources */,
 				5E2D17C627CB158F000049EE /* ArticleService.swift in Sources */,
 				5E2D17A927CB09D5000049EE /* JSONUtil.swift in Sources */,
+				5E2D17CD27CB5298000049EE /* ArticleModel.swift in Sources */,
+				5E2D17D427CB9594000049EE /* APIEnums.swift in Sources */,
 				5E2D176C27CB01D5000049EE /* AppDelegate.swift in Sources */,
 				5E2D17BF27CB0E5E000049EE /* SearchViewModel.swift in Sources */,
+				5E2D17DA27CB98F0000049EE /* APINetworkSession.swift in Sources */,
 				5E2D17BB27CB0E2A000049EE /* LandingViewModel.swift in Sources */,
 				5E2D17B127CB0B6E000049EE /* LandingViewController.swift in Sources */,
 				5E2D17BD27CB0E51000049EE /* SearchController.swift in Sources */,
 				5E2D176E27CB01D5000049EE /* SceneDelegate.swift in Sources */,
+				5E2D17CF27CB92B4000049EE /* APIRequestSession.swift in Sources */,
 				5E2D17B527CB0B95000049EE /* ListingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

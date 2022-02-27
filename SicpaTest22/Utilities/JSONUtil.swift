@@ -8,5 +8,51 @@
 import UIKit
 
 class JSONUtil: NSObject {
+    public static func decode<T: Codable>(data: Data?, ele: T.Type) -> T? {
+        guard let data = data else { return nil }
+        
+        do {
+            let object = try JSONDecoder().decode(T.self, from: data)
+            return object
+        } catch let error {
+            debugPrint("Unable to decode", error)
+        }
+        
+        return nil
+    }
     
+    public static func decodeArray<T: Codable>(data: Data?, ele: [T].Type) -> [T]? {
+        guard let data = data else { return nil }
+        
+        do {
+            let object = try JSONDecoder().decode([T].self, from: data)
+            return object
+        } catch let error {
+            debugPrint("Unable to decode", error)
+        }
+        
+        return nil
+    }
+
+    public static func encode<T: Encodable>(object: T) -> Data? {
+        do {
+            let data = try JSONEncoder().encode(object)
+            return data
+        } catch let error {
+            debugPrint("Unable to encode", error)
+        }
+        
+        return nil
+    }
+    
+    public static func encodeArray<T: Encodable>(object: [T]) -> Data? {
+        do {
+            let data = try JSONEncoder().encode(object)
+            return data
+        } catch let error {
+            debugPrint("Unable to encode array", error)
+        }
+        
+        return nil
+    }
 }

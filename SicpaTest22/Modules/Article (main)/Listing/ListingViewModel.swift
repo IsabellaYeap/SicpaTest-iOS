@@ -8,5 +8,5 @@
 import Foundation
 
 class ListingViewModel: NSObject {
-    
+    let sectionViewModels = Observable<[SectionViewModel]>(value: [])
 }

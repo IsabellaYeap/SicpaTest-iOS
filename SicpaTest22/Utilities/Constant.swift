@@ -49,3 +49,16 @@ struct AppSetting {
     static let nytimesApiKey = "hMfaRA15Bt3AC1cIwhiPcB1bkNlsZ64Y"
 }
 
+protocol ViewModelPressible {
+    var cellPressed: (() -> Void)? { get set }
+}
+
+protocol SectionViewModel {
+    var key: String { get set }
+    var rowViewModels: [RowViewModel] { get set }
+}
+
+protocol RowViewModel {
+    var title: String { get set }
+    var value: String { get set }
+}
