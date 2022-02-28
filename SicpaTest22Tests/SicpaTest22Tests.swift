@@ -9,7 +9,11 @@ import XCTest
 @testable import SicpaTest22
 
 class SicpaTest22Tests: XCTestCase {
-
+    
+    let period = String(Period.today.rawValue)
+    let shareType = ShareType.facebook.rawValue
+    let path = "https://api.nytimes.com/svc/mostpopular/v2/"
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -31,6 +35,39 @@ class SicpaTest22Tests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testBasicRequestGeneration() throws {
+        let request = ArticleEndpoint.indexOfEmailed(params: nil, path: period)
+        let operation = APIOperation(request)
+        let urlRequest = operation.request.urlRequest(with: APIEnvironment.Nytimes)
+        
+        XCTAssertEqual(
+            urlRequest?.url,
+            URL(string: "\(path)emailed/\(period).json")
+        )
+    }
+    
+    func testGeneratingRequestWithQueryItems() throws {
+        let params = [
+            "api-key": AppSetting.nytimesApiKey
+        ] as RequestParameters
+        let request = ArticleEndpoint.indexOfEmailed(params: params, path: period)
+        let operation = APIOperation(request)
+        let urlRequest = operation.request.urlRequest(with: APIEnvironment.Nytimes)
+        
+        XCTAssertEqual(
+            urlRequest?.url,
+            URL(string: "\(path)emailed/\(period).json?api-key=\(AppSetting.nytimesApiKey)")
+        )
+    }
+    
+    func testSuccessfullyPerformingRequest() throws {
+        
+    }
+    
+    func testFailingWhenEncounteringError() throws {
+        
     }
 
 }

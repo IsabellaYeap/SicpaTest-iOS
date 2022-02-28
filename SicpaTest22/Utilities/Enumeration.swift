@@ -56,3 +56,9 @@ public enum LandingType {
         }
     }
 }
+
+public enum OuterKeys: String, CodingKey {
+    case results
+    case response
+    case docs
+}

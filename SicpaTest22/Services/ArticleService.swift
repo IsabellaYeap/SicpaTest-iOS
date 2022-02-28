@@ -8,10 +8,10 @@
 import Foundation
 
 enum ArticleEndpoint {
-    case indexOfViewed(params: RequestParameters, path: String)
-    case indexOfShared(params: RequestParameters, path: String)
-    case indexOfEmailed(params: RequestParameters, path: String)
-    case indexOfSearch(params: RequestParameters)
+    case indexOfViewed(params: RequestParameters?, path: String)
+    case indexOfShared(params: RequestParameters?, path: String)
+    case indexOfEmailed(params: RequestParameters?, path: String)
+    case indexOfSearch(params: RequestParameters?)
 }
 
 extension ArticleEndpoint: RequestProtocol {
@@ -32,10 +32,9 @@ extension ArticleEndpoint: RequestProtocol {
         switch self {
         case .indexOfViewed,
                 .indexOfShared,
-                .indexOfEmailed:
+                .indexOfEmailed,
+                .indexOfSearch:
             return .get
-        case .indexOfSearch:
-            return .post
         }
     }
     
@@ -63,5 +62,71 @@ extension ArticleEndpoint: RequestProtocol {
 }
 
 class ArticleService: NSObject {
+    func getListing(period: Period = .today, landingType: LandingType, completion: @escaping (Result<[ArticleModel]>) -> Void) {
+        let dispatcher = APIRequestDispatcher(environment: APIEnvironment.Nytimes, networkSession: APINetworkSession())
+        
+        let params = [
+            "api-key": AppSetting.nytimesApiKey
+        ] as RequestParameters
+        
+        let endpoint: ArticleEndpoint? = {
+            switch landingType {
+            case .viewed:
+                return ArticleEndpoint.indexOfViewed(params: params, path: String(period.rawValue))
+            case .shared:
+                return ArticleEndpoint.indexOfShared(params: params, path: String(period.rawValue))
+            case .emailed:
+                return ArticleEndpoint.indexOfEmailed(params: params, path: String(period.rawValue))
+            default:
+                return nil
+            }
+        }()
+        
+        guard let endpoint = endpoint else { return }
+        
+        let operation = APIOperation(endpoint)
+        
+        operation.execute(in: dispatcher) { (result) in
+            switch result {
+            case .data(let data, _):
+                guard let result = JSONUtil.decode(data: data, ele: ArticleResult.self) else {
+                    return
+                }
+                completion(.success(result.articles))
+                break
+            case .error(let error, _):
+                completion(.failure(error))
+                break
+            }
+        }
+    }
+    
+    func searchListing(keyword: String, paging: Int, sort: SortOrder = .relevance, completion: @escaping (Result<[ArticleModel]>) -> Void) {
+        let dispatcher = APIRequestDispatcher(environment: APIEnvironment.Nytimes, networkSession: APINetworkSession())
+        
+        let params = [
+            "page": paging,
+            "q": keyword,
+            "sort": sort.rawValue,
+            "api-key": AppSetting.nytimesApiKey
+        ] as RequestParameters
+        
+        let endpoint = ArticleEndpoint.indexOfSearch(params: params)
+        let operation = APIOperation(endpoint)
+        
+        operation.execute(in: dispatcher) { result in
+            switch result {
+            case .data(let data, _):
+                guard let result = JSONUtil.decode(data: data, ele: SearchResult.self) else {
+                    return
+                }
+                completion(.success(result.articles))
+                break
+            case .error(let error, _):
+                completion(.failure(error))
+                break
+            }
+        }
+    }
     
 }

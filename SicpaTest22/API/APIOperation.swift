@@ -42,7 +42,7 @@ class APIOperation: OperationProtocol {
     ///
     /// [...]
     ///
-    /// - Parameter requestDispatcher: The session to request to the operation
+    /// - Parameter dispatcher: The session to request to the operation
     ///
     /// - Returns: An operation result containing data format, file url or error
     ///
