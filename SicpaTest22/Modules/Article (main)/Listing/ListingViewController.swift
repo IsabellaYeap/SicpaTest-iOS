@@ -24,6 +24,10 @@ class ListingViewController: UIViewController {
     }()
     
     var landingType: LandingType? = nil
+    
+    deinit {
+        viewModel.rowViewModels.removeObserver()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,7 @@ class ListingViewController: UIViewController {
     
 //    MARK: Private Methods
     
+    /// Initial setup view layout
     private func setupUI() {
         title = "Articles"
         

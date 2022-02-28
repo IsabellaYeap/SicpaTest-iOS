@@ -68,12 +68,10 @@ struct ArticleModel: Codable {
 
 extension ArticleModel {
     var displayedTitle: String {
-//        return "displayedTitle"
         return title ?? ""
     }
     
     var displayedDate: String {
-//        return "displayedDate"
         return datePublished?.toString("d MMM yyyy") ?? ""
     }
 }

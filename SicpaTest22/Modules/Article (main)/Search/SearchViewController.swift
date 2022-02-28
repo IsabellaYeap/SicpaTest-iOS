@@ -41,6 +41,7 @@ class SearchViewController: UIViewController {
     
 //    MARK: Private Methods
     
+    /// Initial setup view layout
     private func setupUI() {
         title = "Search"
     }

@@ -100,12 +100,7 @@ class APIRequestDispatcher: RequestDispatcherProtocol {
         case 401:
             return .failure(.APIKeyInvalid)
         default:
-            if let JSON = data as? NSDictionary, let errors = JSON["errors"] as? [NSDictionary], let message = errors.first?["message"] as? String {
-                let error = RuntimeError.customError(message)
-                return .failure(.ServerError(error))
-            } else {
-                return .failure(.Unknown)
-            }
+            return .failure(.Unknown)
         }
     }
 }

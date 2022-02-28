@@ -8,6 +8,9 @@
 import UIKit
 
 class JSONUtil: NSObject {
+    
+    /// Decode JSON with generic different types
+    /// - Returns: object type
     public static func decode<T: Codable>(data: Data?, ele: T.Type) -> T? {
         guard let data = data else { return nil }
         
@@ -21,6 +24,8 @@ class JSONUtil: NSObject {
         return nil
     }
     
+    /// Decode an array of generic with different types
+    /// - Returns: an array of object type
     public static func decodeArray<T: Codable>(data: Data?, ele: [T].Type) -> [T]? {
         guard let data = data else { return nil }
         

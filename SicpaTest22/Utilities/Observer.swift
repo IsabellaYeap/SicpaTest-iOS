@@ -30,6 +30,7 @@ class Observable<T> {
         }
     }
     
+    /// Removed observer  to stop it tiggering the closure
     func removeObserver() {
         valueChanged = nil
     }
